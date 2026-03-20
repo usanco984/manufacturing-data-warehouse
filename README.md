@@ -5,6 +5,8 @@ This project presents a manufacturing data warehouse designed for a CNC machine 
 
 The system addresses operational challenges such as manual inventory tracking, lack of transaction history, and undocumented product structures. By implementing a structured database for BOM, inventory transactions, and purchasing, the system improves inventory visibility, reduces dependency on manual knowledge, and supports scalable shop floor operations.
 
+It can be considered a lightweight ERP system tailored for small manufacturing operations, focusing on inventory control, production structure (BOM), and purchasing workflows.
+
 ---
 
 ## Business Context
