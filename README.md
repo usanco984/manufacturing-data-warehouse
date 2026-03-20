@@ -79,10 +79,12 @@ Note: The duplicated Products table (Products_1) in the ER diagram represents a 
 ---
 
 #### Inventory Design (Transaction vs Balance)
-- **InventoryTransaction** → records all movements  
-- **InventoryOnHand** → stores current stock  
+- **InventoryTransaction** → records all movements (purchase, sales, production, adjustment)  
+- **InventoryOnHand** → stores current stock levels  
 
-This design enables traceability and accurate inventory tracking over time.
+This design separates transaction history from current balance, which is a common pattern in real-world inventory systems.
+
+In this project, inventory updates are managed manually. However, the structure is designed to support future automation (e.g., using VBA or triggers) to update InventoryOnHand based on transaction records.
 
 ---
 
