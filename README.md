@@ -123,6 +123,28 @@ This simplifies operations while maintaining practical functionality.
 
 ---
 
+## Database File
+
+The full Microsoft Access database used in this project is included in this repository:
+
+- `database/manufacturing-database.accdb`
+
+### How to Use
+1. Download the `.accdb` file  
+2. Open it using Microsoft Access (Windows environment required)  
+3. Enable content if prompted (for forms, queries, and VBA/macros)  
+4. Navigate through the main forms:
+   - BOM Form (Product structure and components)
+   - Inventory Transaction Form (Inventory movements)
+   - Purchase Order Form (Supplier transactions)
+
+### Notes
+- Microsoft Access is not supported natively on macOS. The database was developed and tested in a Windows environment.  
+- The file is included to demonstrate the full system implementation, including table relationships, forms, queries, and reports.  
+- Screenshots in this repository provide a visual overview of the system for users who cannot run Microsoft Access.
+
+---
+
 ## Reflection
 
 ### Strengths
