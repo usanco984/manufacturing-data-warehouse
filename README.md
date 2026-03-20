@@ -127,7 +127,7 @@ This simplifies operations while maintaining practical functionality.
 
 The full Microsoft Access database is available here:
 
-- 📁 [Download Manufacturing Database](database/manufacturing-database.accdb)
+- 📁 [Download Manufacturing Database](manufacturing-database.accdb)
 
 ### How to Use
 1. Download the `.accdb` file  
