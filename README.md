@@ -1,6 +1,3 @@
-# manufacturing-data-warehouse
-Manufacturing Data Warehouse for Inventory, BOM, and Purchasing Management in a CNC Machine Shop
-
 # Manufacturing Data Warehouse for CNC Operations
 
 ## Overview
@@ -64,151 +61,101 @@ Forms and reports allow users to:
 
 ---
 
-## BOM Structure (Self-Referencing Relationship)
-The Bill of Materials (BOM) table is designed using a self-referencing relationship on the Products table.
+## ER Diagram
+![ERD](images/erd.jpg)
 
-- `parentpID` represents the finished or parent product  
-- `childpID` represents the component or material  
+### Key Design Highlights
 
-This structure allows the system to represent how products are built from multiple parts, including multi-level assemblies.
+#### BOM (Self-Referencing Structure)
+The BOM table models the relationship between finished products and their components using a self-referencing design.
 
-Note: In the ER diagram, a duplicated Products table (Products_1) is used as a visual alias to represent this self-join relationship. In the actual implementation, both keys reference the same Products table.
+- `parentpID` → finished product  
+- `childpID` → component or material  
+
+Note: The duplicated Products table (Products_1) in the ER diagram represents a self-join alias. In implementation, both keys reference the same Products table.
 
 ---
 
-## Inventory Design Logic
-The system separates inventory into two related entities:
+#### Inventory Design (Transaction vs Balance)
+- **InventoryTransaction** → records all movements  
+- **InventoryOnHand** → stores current stock  
 
-- **InventoryTransaction**: records all inventory movements such as purchasing, production, and adjustments  
-- **InventoryOnHand**: maintains the current inventory balance for each product  
-
-This design reflects real-world manufacturing systems, where transaction history is preserved while current stock levels are updated separately.
-
-This approach improves traceability, supports auditing of inventory changes, and allows analysis of inventory flow over time.
+This design enables traceability and accurate inventory tracking over time.
 
 ---
 
 ## Design Considerations
-For this project, the database design prioritizes practicality and usability for a small manufacturing environment.
+To maintain usability for a small manufacturing environment, some cost and material attributes are stored directly in the Products table rather than fully normalized.
 
-Some attributes related to materials, costs, and outsourcing are stored within the Products table rather than being fully normalized into separate entities. This decision was made to simplify data entry and reduce system complexity for end users.
-
-While further normalization could improve scalability, this structure provides a balanced solution for a small business with limited resources.
+This simplifies operations while maintaining practical functionality.
 
 ---
 
 ## Data Flow Overview
-The system follows a simple operational flow:
-
-1. Products and BOM define how items are structured  
-2. Purchase Orders record procurement from suppliers or partners  
-3. InventoryTransaction captures all stock movements  
-4. InventoryOnHand reflects the current stock levels  
-
-This flow supports key manufacturing operations such as purchasing, production tracking, and inventory management.
-
----
-
-## Relational Schema
-
-Customers(cusID PK, CustomerType, CompanyName, CusName, CusTitle, Email, Phone, Address, City, Region, PostalCode, Country, PaymentTerms, Note)
-
-Orders(oID PK, cusID FK, sID FK, eID FK, oDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry)
-
-OD_Details(odID PK, oID FK, pID FK, fgID FK, UnitPrice, Quantity, Discount)
-
-Shippers(sID PK, CompanyName, Phone, City, Email)
-
-Products(pID PK, cID FK, pName, pType, Series, MAP, DealerPrice, StandardCost, Discontinued, MaterialType, MaterialSize, MaterialUnitCost, LastPurchasedPrice, OutsourceCost)
-
-InventoryOnHand(ihID PK, pID FK, Quantity, LastUpdatedDate)
-
-InventoryTransaction(itID PK, pID FK, TransactionDate, TransactionType, QtyChange)
-
-BOM(bomID PK, parentpID FK, childpID FK, Quantity)
-
-Employees(eID PK, eName, Role)
-
-Partners(parID PK, CompanyName, Par_Type, Supplier, Subcontractor, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Email, Website)
-
-PO(poID PK, parID FK, eID FK, OrderDate, ExpectedDate, TotalAmount, Status, PaymentTerms)
-
-PO_Details(podID PK, poID FK, pID FK, UnitPrice, Quantity, ReceivedQuantity, IsClosed)
-
-Categories(cID PK, cName, Description)
+1. Products and BOM define structure  
+2. Purchase Orders manage procurement  
+3. InventoryTransaction records movements  
+4. InventoryOnHand reflects stock levels  
 
 ---
 
 ## Screenshots
 
-### ER Diagram
-![ERD](images/erd.jpg)
-
----
-
 ### BOM Form (Parent–Child Structure)
-This form displays the relationship between finished products and their components using a main form and subform structure.
-
 ![BOM Form](images/form-bom.png)
 
 ---
 
 ### Inventory Transaction Form
-This form records all inventory movements, including purchases, production, and adjustments.
-
 ![Inventory Form](images/form-inventory.png)
 
 ---
 
 ### Purchase Order Form
-This form is used to manage supplier transactions and outsourcing processes.
-
 ![PO Form](images/form-po.png)
 
 ---
 
 ### Sample Report
-This report provides a structured view of operational data for analysis and tracking.
-
 ![Report](images/report-inventory.png)
 
 ---
 
 ## Reflection
 
-### Project Strengths
+### Strengths
 - Designed a practical BOM structure using main form and subform  
-- Successfully implemented relationships between inventory and transaction tables  
-- Improved debugging and problem-solving skills through Access and VBA issues  
+- Implemented inventory transaction logic  
+- Improved debugging and troubleshooting skills  
 
-### Limitations
-- Difficulty filtering BOM reports due to parent-child relationship structure  
-- Balancing conceptual design with Access implementation  
-- Limited error visibility in Microsoft Access  
+### Challenges
+- Filtering BOM reports due to self-referencing structure  
+- Balancing design vs. Access limitations  
+- Limited system error visibility  
 
 ### Improvements
-- Define business workflow before database design  
-- Automate inventory updates using VBA  
-- Expand to SQL-based systems and BI tools such as Power BI  
+- Define workflow before database design  
+- Automate inventory updates with VBA  
+- Expand to SQL-based systems and BI tools  
 
 ---
 
 ## Next Steps
-- Integrate with Shopify via API  
-- Add order management system (Orders, OrderDetails)  
-- Build dashboards using Power BI  
-- Automate inventory updates from transaction records  
+- Shopify API integration  
+- Order management system  
+- Power BI dashboards  
+- Automated inventory updates  
 
 ---
 
 ## Tools Used
 - Microsoft Access  
 - SQL  
-- Data Modeling (ERD)
+- Data Modeling (ERD)  
 
 ---
 
-Author
+## Author
 Yumi Kuwana
 M.S. in Data Analytics in Business
 Seattle Pacific University
