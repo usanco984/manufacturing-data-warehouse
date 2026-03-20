@@ -142,7 +142,7 @@ Categories(cID PK, cName, Description)
 ## Screenshots
 
 ### ER Diagram
-![ERD](images/erd.png)
+![ERD](images/erd.jpg)
 
 ---
 
