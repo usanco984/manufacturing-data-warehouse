@@ -108,13 +108,13 @@ This simplifies operations while maintaining practical functionality.
 
 ---
 
-### Inventory Transaction Form
-![Inventory Form](images/form-inventory.png)
+### Purchase Order Form
+![PO Form](images/form-po.png)
 
 ---
 
-### Purchase Order Form
-![PO Form](images/form-po.png)
+### Inventory Transaction Form
+![Inventory Form](images/form-inventory.png)
 
 ---
 
@@ -125,9 +125,9 @@ This simplifies operations while maintaining practical functionality.
 
 ## Database File
 
-The full Microsoft Access database used in this project is included in this repository:
+The full Microsoft Access database is available here:
 
-- `database/manufacturing-database.accdb`
+- 📁 [Download Manufacturing Database](database/manufacturing-database.accdb)
 
 ### How to Use
 1. Download the `.accdb` file  
